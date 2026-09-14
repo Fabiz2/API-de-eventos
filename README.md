@@ -1,30 +1,56 @@
-# Eventos API
+# API-Eventos
 
 API REST para gerenciamento de eventos com controle de vagas.
 
 ## Tecnologias
 
-- Java 17
-- Spring Boot 3.2
-- H2 (banco em memória)
+- Java 21
+- Spring Boot 4.1.1
+- Spring Data JPA
+- MySQL
+- Lombok
+- SpringDoc OpenAPI (Swagger)
 
 ## Como executar
 
-**Pré-requisitos:** Java 17+ e Maven instalados.
+**Pré-requisitos:** Java 21+ e Maven instalados, MySQL rodando.
+
+### 1. Configure o banco de dados
+
+Crie o banco no MySQL:
+
+```sql
+CREATE DATABASE eventosdb;
+```
+
+### 2. Configure o `application.yml`
+
+```yaml
+spring:
+  application:
+    name: API-Eventos
+
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/api_eventos?createDatabaseIfNotExist=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+```
+
+### 3. Execute o projeto
 
 ```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/eventos-api.git
-cd eventos-api
-
-# Execute
 ./mvnw spring-boot:run
 ```
 
 A API estará disponível em `http://localhost:8080`.
 
-> O banco H2 é em memória — os dados são resetados ao reiniciar a aplicação.  
-> Console H2: `http://localhost:8080/h2-console` (usuário: `sa`, senha: em branco)
+Documentação Swagger: `http://localhost:8080/swagger-ui.html`
 
 ---
 
@@ -51,3 +77,4 @@ A API estará disponível em `http://localhost:8080`.
 | `POST` | `/eventos/{eventoId}/inscricoes/{participanteId}` | Inscrever participante |
 | `GET` | `/eventos/{eventoId}/inscricoes` | Listar inscritos no evento |
 | `DELETE` | `/eventos/{eventoId}/inscricoes/{participanteId}` | Cancelar inscrição |
+
