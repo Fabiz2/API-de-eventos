@@ -2,6 +2,7 @@ package com.api_eventos.service;
 
 import com.api_eventos.dto.ParticipanteDto;
 import com.api_eventos.dto.ParticipanteResponse;
+import com.api_eventos.exception.EmailDuplicadoException;
 import com.api_eventos.model.Participante;
 import com.api_eventos.repository.ParticipanteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class ParticipanteService {
     }
 
     public ParticipanteResponse buscarId(Long id){
-        Participante participante = participanteRepository.findById(id).orElseThrow(() -> new RuntimeException("Participante não encontrado"));
+        Participante participante = participanteRepository.findById(id).orElseThrow(() -> new EmailDuplicadoException());
 
         return toDTO(participante);
     }
