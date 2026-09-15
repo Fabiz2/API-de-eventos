@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -17,5 +19,7 @@ public class Participante {
     private String nome;
     @Column(nullable = false)
     private String email;
-
+    @OneToMany(mappedBy = "participante")
+    @JoinColumn(nullable = false)
+    private List<Inscricao> inscricao;
 }

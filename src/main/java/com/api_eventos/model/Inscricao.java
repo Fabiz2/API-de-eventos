@@ -24,6 +24,7 @@ public class Inscricao {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Participante participante;
+
     @Column(nullable = false)
     private Date data_inscricao;
 }
