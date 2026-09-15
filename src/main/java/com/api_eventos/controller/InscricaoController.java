@@ -21,4 +21,6 @@ public class InscricaoController {
         InscricaoResponse inscricaoRealizada = inscricaoService.cadastrar(inscricaoDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(inscricaoRealizada);
     }
+
+
 }

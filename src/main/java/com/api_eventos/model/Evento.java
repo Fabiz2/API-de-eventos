@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Evento {
     private String descricao;
 
     @Column(nullable = false)
-    private Date data;
+    private LocalDate data;
 
     @Column(nullable = false)
     private String local;
