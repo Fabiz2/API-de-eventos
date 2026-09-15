@@ -21,4 +21,10 @@ public class InscricaoController {
         InscricaoResponse inscricaoRealizada = inscricaoService.cadastrar(inscricaoDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(inscricaoRealizada);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id){
+        inscricaoService.cancelarInscricao(id);
+        return ResponseEntity.noContent().build();
+    }
 }
