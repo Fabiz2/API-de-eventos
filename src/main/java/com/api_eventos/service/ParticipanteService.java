@@ -24,6 +24,9 @@ public class ParticipanteService {
     }
 
     public ParticipanteResponse cadastrar(ParticipanteDto participanteDto){
+        if (participanteRepository.existsByEmail(participanteDto.email())){
+            throw new EmailDuplicadoException();
+        }
         Participante participante = new Participante();
 
         participante.setNome(participanteDto.nome());
@@ -33,7 +36,7 @@ public class ParticipanteService {
     }
 
     public ParticipanteResponse buscarId(Long id){
-        Participante participante = participanteRepository.findById(id).orElseThrow(() -> new EmailDuplicadoException());
+        Participante participante = participanteRepository.findById(id).orElseThrow(() -> new RuntimeException("Participante não encontrado"));
 
         return toDTO(participante);
     }
