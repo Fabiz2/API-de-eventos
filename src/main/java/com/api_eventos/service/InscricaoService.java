@@ -1,6 +1,7 @@
 package com.api_eventos.service;
 
 import com.api_eventos.dto.*;
+import com.api_eventos.exception.InscricaoDuplicadaException;
 import com.api_eventos.exception.VagasLimiteException;
 import com.api_eventos.model.Evento;
 import com.api_eventos.model.Inscricao;
@@ -58,8 +59,15 @@ public class InscricaoService {
         inscricao.setParticipante(participante);
         inscricao.setData_inscricao(inscricaoDto.data_inscricao());
 
-        if (inscricaoRepository.countByEventoId(evento.getId()) > evento.getCap_maxima()){
+        if (inscricaoRepository.countByEventoId(evento.getId()) >= evento.getCap_maxima()){
             throw new VagasLimiteException();
+        }
+
+        if (inscricaoRepository.existsByEventoIdAndParticipanteId(
+                evento.getId(),
+                participante.getId()
+        )) {
+            throw new InscricaoDuplicadaException();
         }
 
         return toDTO(inscricaoRepository.save(inscricao));
