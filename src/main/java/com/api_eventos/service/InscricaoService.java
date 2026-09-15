@@ -64,4 +64,8 @@ public class InscricaoService {
 
         return toDTO(inscricaoRepository.save(inscricao));
     }
+
+    public void cancelarInscricao(Long id){
+        inscricaoRepository.deleteById(id);
+    }
 }
