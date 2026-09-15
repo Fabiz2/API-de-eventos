@@ -23,5 +23,5 @@ public class InscricaoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(inscricaoRealizada);
     }
 
-    pu
+
 }

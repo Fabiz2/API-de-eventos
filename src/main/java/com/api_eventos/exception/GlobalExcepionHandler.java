@@ -33,4 +33,12 @@ public class GlobalExcepionHandler {
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);
     }
 
+    @ExceptionHandler
+    public ResponseEntity<Map<String, String>> handleNotFound(InscricaoDuplicadaException erro){
+        Map<String, String> error = new HashMap<>();
+
+        error.put("erro", erro.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.CONFLICT);
+    }
+
 }
