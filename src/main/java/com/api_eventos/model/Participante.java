@@ -20,6 +20,5 @@ public class Participante {
     @Column(nullable = false)
     private String email;
     @OneToMany(mappedBy = "participante")
-    @JoinColumn(nullable = false)
     private List<Inscricao> inscricao;
 }

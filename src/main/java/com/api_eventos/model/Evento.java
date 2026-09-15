@@ -32,7 +32,6 @@ public class Evento {
     private Integer cap_maxima;
 
     @OneToMany(mappedBy = "evento")
-    @JoinColumn(nullable = false)
     private List<Inscricao> inscricao;
 
 }
