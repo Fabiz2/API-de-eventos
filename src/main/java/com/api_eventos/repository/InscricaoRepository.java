@@ -8,9 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InscricaoRepository extends JpaRepository<Inscricao, Long> {
-    @Query("""
-            SELECT COUNT (*) FROM inscricao i
-            WHERE i.evento_id = :id
-            """)
     Long countByEventoId(Long id);
 }
