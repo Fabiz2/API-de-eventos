@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -29,4 +30,9 @@ public class Evento {
 
     @Column(nullable = false)
     private Integer cap_maxima;
+
+    @OneToMany(mappedBy = "evento")
+    @JoinColumn(nullable = false)
+    private List<Inscricao> inscricao;
+
 }
