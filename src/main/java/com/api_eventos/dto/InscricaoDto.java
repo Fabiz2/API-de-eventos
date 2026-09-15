@@ -6,8 +6,8 @@ import com.api_eventos.model.Participante;
 import java.util.Date;
 
 public record InscricaoDto(
-        Evento evento,
-        Participante participante,
+        Long evento_id,
+        Long participante_id,
         Date data_inscricao
 ) {
 }

@@ -18,7 +18,7 @@ public class Inscricao {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "evento_id")
+    @JoinColumn(nullable = false)
     private Evento evento;
 
     @ManyToOne

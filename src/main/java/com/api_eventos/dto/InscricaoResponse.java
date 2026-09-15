@@ -7,8 +7,8 @@ import java.util.Date;
 
 public record InscricaoResponse(
         Long id,
-        Evento evento,
-        Participante participante,
+        EventoDto evento,
+        ParticipanteDto participante,
         Date data_inscricao
 ) {
 }
